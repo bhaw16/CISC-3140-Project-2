@@ -5,7 +5,6 @@ class Medal{
         this.numSilver = numSilver;
         this.numBronze = numBronze;
         this.total = this.numGold + this.numSilver + this.numBronze;
-        this.number = 0;
     }
 
     toString() {
