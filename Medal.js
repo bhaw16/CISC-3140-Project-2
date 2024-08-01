@@ -11,8 +11,4 @@ class Medal{
     toString() {
         return `Gold: ${this.numGold} Silver: ${this.numSilver} Bronze: ${this.numBronze} Total: ${this.total}`;
     }
-
-    static assignNumber(number) {
-        return number;
-    }
 }
