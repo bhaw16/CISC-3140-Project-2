@@ -15,10 +15,12 @@ window.onload = () => {
     //console.log(`${list}\n${sections}`);
     console.log(list);
     console.log(sections);
+    console.log(countries);
     createMedals();
     for (var i = 0; i < countries.length; i++) {
         countries[i].addEventListener("click", displayMedals);
         countriesCopy.push(countries[i]);
+        countries[i].insertAdjacentElement("afterend", document.createElement("p"));
     }
     //document.addEventListener("click", onClick);
 }
@@ -28,19 +30,31 @@ function createMedals() {
 }
 
 function displayMedals() {
+    //medalsDisplayed = true;
     var index = countriesCopy.indexOf(event.currentTarget);
-    if (!medalsDisplayed) {
-        medalsDisplayed.innerText = "Display Medals";
-        console.log(index);
-        countries[index].insertAdjacentText("afterend", medals[index].toString());
+    try {
+        if (!medalsDisplayed) {
+            medalsDisplayed.innerText = "Display Medals";
+            console.log(index);
+            document.getElementsByTagName("p")[index].innerText = medals[index].toString();
+        }
+        else {
+            event.currentTarget.innerText = "Hide Medals";
+            console.log(document.getElementsByTagName("p")[0]);
+            document.getElementsByTagName("p")[index].innerText = null;
+            //document.getElementsByTagName("p")[index].style.display = "none";
+        
+            //countries[index].removeChild(countries[index].children[0]);
+        }
+        medalsDisplayed.innerHTML = medalsDisplayed.innerText;
     }
-    else {
-        event.currentTarget.innerText = "Hide Medals";
-        //document.getElementsByTagName("p")[index].style.display = "none";
-        console.log(document.getElementsByTagName("p")[index]);
-        //countries[index].removeChild(countries[index].children[0]);
+    catch(err) {
+        document.getElementsByTagName("p")[index].innerText = "No rankings yet.";
     }
-    medalsDisplayed = !medalsDisplayed;
+    finally {
+        medalsDisplayed = !medalsDisplayed;
+    }
+    //medalsDisplayed = !medalsDisplayed;
 }
 /*
 function onClick() {
