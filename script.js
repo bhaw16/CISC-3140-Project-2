@@ -1,11 +1,12 @@
-var sections;
-var list;
+var sections, list;
+var listCopy = [], sectionsCopy = [];
 var countries, medals = createMedals();
 var countriesCopy = [];
 var medalsDisplayed = false;
 var newsLinks = setupNews();
 var scrollButtons;
 var currentLink = 0;
+var circleSpans, circleSpansCopy = [];
 
 //var sectionsArray = [];
 
@@ -20,6 +21,13 @@ window.onload = () => {
     console.log(list);
     console.log(sections);
     console.log(countries);
+    for (var i = 0; i < list.length; i++) {
+        list[i].addEventListener("click", navScroll);
+        listCopy.push(list[i]);
+    }
+    for (var i = 0; i < sections.length; i++) {
+        sectionsCopy.push(sections[i]);
+    }
     for (var i = 0; i < countries.length; i++) {
         countries[i].addEventListener("click", displayMedals);
         countriesCopy.push(countries[i]);
@@ -32,6 +40,17 @@ window.onload = () => {
     for (var i = 0; i < scrollButtons.length; i++) {
         scrollButtons[i].addEventListener("click", cycleThroughLinks);
     }
+    for (var i = 0; i < newsLinks.length; i++) {
+        var circleSpan = document.createElement("span");
+        circleSpan.innerText = "b";
+        circleSpan.className = "headline-scroller-selector";
+        circleSpan.addEventListener("click", cycleThroughLinks);
+        console.log(circleSpan);
+        circleSpansCopy.push(circleSpan);
+        document.getElementsByTagName("body")[0].insertAdjacentElement("beforeend", circleSpan);
+    }
+    circleSpans = document.getElementsByTagName("span");
+    console.log(circleSpans);
     //document.addEventListener("click", onClick);
 }
 
@@ -66,15 +85,6 @@ function displayMedals() {
     finally {
         medalsDisplayed = !medalsDisplayed;
     }
-}
-
-function createNewsLink(anchor, link, title, innerText) {
-    anchor.href = link;
-    anchor.title = title;
-    anchor.innerText = innerText;
-    anchor.target = "_blank";
-    anchor.class = "news-links";
-    return anchor;
 }
 
 function getJudoSchedules() {
@@ -122,8 +132,11 @@ function cycleThroughLinks() {
         if (event.currentTarget == document.getElementById("left")) {
             currentLink--;
         }
-        else {
+        else if (event.currentTarget == document.getElementById("right")) {
             currentLink++;
+        }
+        else {
+            currentLink = circleSpansCopy.indexOf(event.currentTarget);
         }
         if (currentLink < 0 || currentLink >= newsLinks.length) {
             throw new RangeError("currentLink must be a valid index of newsLinks.");
@@ -145,6 +158,14 @@ function cycleThroughLinks() {
         console.log(newsLinks[currentLink]);
         console.log(`${newsLinks[currentLink].title}\n${newsLinks[currentLink].href}\n${newsLinks[currentLink].innerText}`);
     }
+}
+
+function navScroll() {
+    scrollTo(0, sections[listCopy.indexOf(event.currentTarget)].offsetTop);
+    //sections[listCopy.indexOf(event.currentTarget)].scrollIntoView(true);
+    console.log(sections[listCopy.indexOf(event.currentTarget)].offsetTop);
+    console.log(sections[listCopy.indexOf(event.currentTarget)]);
+    console.log("successful!");
 }
 
 /*
