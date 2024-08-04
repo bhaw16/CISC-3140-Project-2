@@ -49,7 +49,7 @@ window.onload = () => {
         circleSpansCopy.push(circleSpan);
         document.getElementById("news").insertAdjacentElement("beforeend", circleSpan);
     }
-    circleSpans = document.getElementsByTagName("span");
+    circleSpans = document.getElementsByClassName("headline-scroller-selector");
     console.log(circleSpans);
     changeCircleSpanSelected();
     //document.addEventListener("click", onClick);
