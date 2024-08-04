@@ -8,6 +8,7 @@
     </head>
     <body>
         <script src="Medal.js"></script>
+        <script src="AnchorProperties.js"></script>
         <script src="script.js"></script>
         <header>
             <h1>Paris Olympic Games</h1>
@@ -40,6 +41,11 @@
             <h2>Medal Rankings</h2>
             <ol>
                 <li>
+                    China
+                    <button class="medal-button" type="button"
+                    value="Display Medals">Display Medals</button>
+                </li>
+                <li>
                     USA
                     <button class="medal-button" type="button"
                     value="Display Medals">Display Medals</button>
@@ -50,22 +56,17 @@
                     value="Display Medals">Display Medals</button>
                 </li>
                 <li>
+                    Australia
+                    <button class="medal-button" type="button"
+                    value="Display Medals">Display Medals</button>
+                </li>
+                <li>
                     Japan
                     <button class="medal-button" type="button"
                     value="Display Medals">Display Medals</button>
                 </li>
                 <li>
-                    China
-                    <button class="medal-button" type="button"
-                    value="Display Medals">Display Medals</button>
-                </li>
-                <li>
                     Great Britain
-                    <button class="medal-button" type="button"
-                    value="Display Medals">Display Medals</button>
-                </li>
-                <li>
-                    Australia
                     <button class="medal-button" type="button"
                     value="Display Medals">Display Medals</button>
                 </li>
@@ -85,7 +86,7 @@
                     value="Display Medals">Display Medals</button>
                 </li>
                 <li>
-                    Hong Kong
+                    Germany
                     <button class="medal-button" type="button"
                     value="Display Medals">Display Medals</button>
                 </li>
@@ -97,13 +98,38 @@
         <br>
         <section>
             <h2>Sports List</h2>
-            <ol>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ol>
+            <ul>
+                <li>
+                    <button type="button" class="schedule-button"
+                    onclick="getJudoSchedules()" value="Get Judo Schedules">
+                        Judo
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="schedule-button"
+                    onclick="get3_3BasketballSchedules()" value="Get 3×3 Basketball Schedules">
+                        3×3 Basketball
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="schedule-button"
+                    onclick="getMarathonSwimmingSchedules()" value="Get Marathon Swimming Schedules">
+                        Marathon Swimming
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="schedule-button"
+                    onclick="getSurfingSchedules()" value="Get Surfing Schedules">
+                        Surfing
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="schedule-button"
+                    onclick="getSkateboardingSchedules()" value="Get Skateboarding Schedules">
+                        Skateboarding
+                    </button>
+                </li>
+            </ul>
         </section>
         <br>
         <br>
@@ -111,7 +137,11 @@
         <br>
         <section>
             <h2>News</h2>
-            <h3>
+            <button type="button" value="☜" class="left-and-right-buttons"
+            id="left">☜</button>
+            <h3 id="news-header">
+                <a id="news-link"></a>
+                <!--
                 <a href="https://olympics.com/en/news/paris-2024-tennis-nadal-eliminated-other-stars-advance"
             target="_blank" title="Rafael Nadal Article">
                     Rafael Nadal ousted as Carlos Alcaraz, other stars advance
@@ -119,18 +149,21 @@
                     to third round of men's and women's singles
                 </a>
             </h3>
-            <h3>
+            <h3 class="news-header">
                 <a href="https://olympics.com/en/paris-2024/sport-explainers"
                 target="_blank" title="Sport Explainers Video">
                     Get Ready for the Action: Wach Allianz Sports Explainers
                 </a>
             </h3>
-            <h3>
+            <h3 class="news-header">
                 <a href="https://olympics.com/en/news/tom-daley-olympic-gold-paris-2024-kids-watching"
                 target="_blank" title="Tom Daley Article">
                     Tom Daley: "My Olympic gold medal is having my kids there to watch"
                 </a>
+            -->
             </h3>
+            <button type="button" value="☞" class="left-and-right-buttons"
+            id="right">☞</button>
         </section>
     </body>
 </html>

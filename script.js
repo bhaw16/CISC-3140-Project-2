@@ -3,7 +3,7 @@ var list;
 var countries, medals = createMedals();
 var countriesCopy = [];
 var medalsDisplayed = false;
-var newsLinks;
+var newsLinks = setupNews();
 var scrollButtons;
 var currentLink = 0;
 
@@ -20,13 +20,15 @@ window.onload = () => {
     console.log(list);
     console.log(sections);
     console.log(countries);
-    initializeNews();
     for (var i = 0; i < countries.length; i++) {
         countries[i].addEventListener("click", displayMedals);
         countriesCopy.push(countries[i]);
         countries[i].insertAdjacentElement("afterend", document.createElement("p"));
         document.getElementsByTagName("p")[i].className = "medal-count";
     }
+    document.getElementById("news-link").innerHTML = newsLinks[currentLink].innerHTML;
+    document.getElementById("news-link").href = newsLinks[currentLink].href;
+    document.getElementById("news-link").title = newsLinks[currentLink].title;
     for (var i = 0; i < scrollButtons.length; i++) {
         scrollButtons[i].addEventListener("click", cycleThroughLinks);
     }
@@ -66,19 +68,13 @@ function displayMedals() {
     }
 }
 
-function createNewsLink(anchor, link, title, innerHTML) {
+function createNewsLink(anchor, link, title, innerText) {
     anchor.href = link;
     anchor.title = title;
-    anchor.innerHTML = innerHTML;
-    //anchor.target = "_blank";
-}
-
-function initializeNews() {
-    newsLinks = [
-        document.createElement("a"),
-        document.createElement("a"),
-        document.createElement("a")
-    ];
+    anchor.innerText = innerText;
+    anchor.target = "_blank";
+    anchor.class = "news-links";
+    return anchor;
 }
 
 function getJudoSchedules() {
@@ -102,21 +98,18 @@ function getSkateboardingSchedules() {
 }
 
 function setupNews() {
-    newsLinks = [
-        createNewsLink(
-            newsLinks[0],
+    return [
+        new AnchorProperties(
             "https://olympics.com/en/news/paris-2024-tennis-nadal-eliminated-other-stars-advance",
             "Rafael Nadal Article",
             "Rafael Nadal ousted as Carlos Alcaraz, other stars advance <br> to third round of men's and women's singles"
         ),
-        createNewsLink(
-            newsLinks[1],
+        new AnchorProperties(
             "https://olympics.com/en/paris-2024/sport-explainers",
             "Sport Explainers Video",
             "Get Ready for the Action: Wach Allianz Sports Explainers"
         ),
-        createNewsLink(
-            newsLinks[2],
+        new AnchorProperties(
             "https://olympics.com/en/news/tom-daley-olympic-gold-paris-2024-kids-watching",
             "Tom Daley Article",
             "Tom Daley: \"My Olympic gold medal is having my kids there to watch\""
@@ -126,16 +119,15 @@ function setupNews() {
 
 function cycleThroughLinks() {
     try {
-        if (event.currentTarget === document.getElementById("left")) {
+        if (event.currentTarget == document.getElementById("left")) {
             currentLink--;
         }
         else {
             currentLink++;
         }
-        if (currentLink < 0 && currentLink >= newsLinks.length) {
+        if (currentLink < 0 || currentLink >= newsLinks.length) {
             throw new RangeError("currentLink must be a valid index of newsLinks.");
         }
-        document.getElementById("news-header").insertAdjacentElement("beforeend", newsLinks[currentLink]);
     }
     catch (err) {
         if (currentLink < 0) {
@@ -146,9 +138,13 @@ function cycleThroughLinks() {
         }
     }
     finally {
+        document.getElementById("news-link").innerHTML = newsLinks[currentLink].innerHTML;
+        document.getElementById("news-link").href = newsLinks[currentLink].href;
+        document.getElementById("news-link").title = newsLinks[currentLink].title;
         console.log(currentLink);
+        console.log(newsLinks[currentLink]);
+        console.log(`${newsLinks[currentLink].title}\n${newsLinks[currentLink].href}\n${newsLinks[currentLink].innerText}`);
     }
-
 }
 
 /*
