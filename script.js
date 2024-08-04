@@ -47,7 +47,7 @@ window.onload = () => {
         circleSpan.addEventListener("click", cycleThroughLinks);
         console.log(circleSpan);
         circleSpansCopy.push(circleSpan);
-        document.getElementsByTagName("body")[0].insertAdjacentElement("beforeend", circleSpan);
+        document.getElementById("news").insertAdjacentElement("beforeend", circleSpan);
     }
     circleSpans = document.getElementsByTagName("span");
     console.log(circleSpans);
