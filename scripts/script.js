@@ -2,7 +2,7 @@ var sections, list;
 var listCopy = [], sectionsCopy = [];
 var countries, medals = createMedals();
 var countriesCopy = [];
-var medalsDisplayed = false;
+var medalsDisplayed = false, circleClicked = false;
 var newsLinks = setupNews();
 var scrollButtons;
 var currentLink = 0;
@@ -57,6 +57,8 @@ window.onload = () => {
         circleSpan.className = "headline-scroller-selector";
         circleSpan.style.backgroundColor = "lightgrey";
         circleSpan.addEventListener("click", cycleThroughLinks);
+        circleSpan.addEventListener("mouseover", changeHoverStyle);
+        circleSpan.addEventListener("mouseout", resetHoverStyle);
         console.log(circleSpan);
         circleSpansCopy.push(circleSpan);
         document.getElementById("news").insertAdjacentElement("beforeend", circleSpan);
@@ -153,6 +155,7 @@ function cycleThroughLinks() {
         }
         else {
             currentLink = circleSpansCopy.indexOf(event.currentTarget);
+            circleClicked = !circleClicked;
         }
         if (currentLink < 0 || currentLink >= newsLinks.length) {
             throw new RangeError("currentLink must be a valid index of newsLinks.");
@@ -182,6 +185,24 @@ function changeCircleSpanSelected() {
     for (var i = 0; i < circleSpans.length; i++) {
         if (i != currentLink) {
             circleSpans[i].style.backgroundColor = window.getComputedStyle(circleSpans[i]).getPropertyValue("--bgColor");
+        }
+    }
+}
+
+function changeHoverStyle() {
+    event.currentTarget.style.cursor = "pointer";
+    if (event.currentTarget != circleSpans[circleSpansCopy.indexOf(circleSpans[currentLink])]) {
+        event.currentTarget.style.backgroundColor = "gray";
+    }
+}
+
+function resetHoverStyle() {
+    for (var i = 0; i < circleSpans.length; i++) {
+        if (i != currentLink) {
+            circleSpans[i].style.backgroundColor = window.getComputedStyle(circleSpans[i]).getPropertyValue("--bgColor");
+        }
+        else {
+            circleSpans[i].style.backgroundColor = window.getComputedStyle(circleSpans[i]).getPropertyValue("--darkerBgColor");
         }
     }
 }
