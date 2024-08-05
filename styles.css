@@ -109,11 +109,6 @@ section {
     background-color: var(--bgColor);
 }
 
-.headline-scroller-selector:hover {
-    background-color: grey;
-    cursor: pointer;
-}
-
 .headline-scroller-selector:active {
     background-color: var(--darkerBgColor);
 }
