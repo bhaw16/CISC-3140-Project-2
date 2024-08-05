@@ -54,8 +54,8 @@ window.onload = () => {
     }
     for (var i = 0; i < newsLinks.length; i++) {
         var circleSpan = document.createElement("span");
-        circleSpan.innerText = "b";
         circleSpan.className = "headline-scroller-selector";
+        circleSpan.style.backgroundColor = "lightgrey";
         circleSpan.addEventListener("click", cycleThroughLinks);
         console.log(circleSpan);
         circleSpansCopy.push(circleSpan);
@@ -178,10 +178,10 @@ function cycleThroughLinks() {
 }
 
 function changeCircleSpanSelected() {
-    circleSpans[currentLink].innerText = "a";
+    circleSpans[currentLink].style.backgroundColor = window.getComputedStyle(circleSpans[currentLink]).getPropertyValue("--darkerBgColor");
     for (var i = 0; i < circleSpans.length; i++) {
         if (i != currentLink) {
-            circleSpans[i].innerText = "b";
+            circleSpans[i].style.backgroundColor = window.getComputedStyle(circleSpans[i]).getPropertyValue("--bgColor");
         }
     }
 }
