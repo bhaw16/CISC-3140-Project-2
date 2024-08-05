@@ -2,12 +2,13 @@ var sections, list;
 var listCopy = [], sectionsCopy = [];
 var countries, medals = createMedals();
 var countriesCopy = [];
-var medalsDisplayed = false, circleClicked = false;
+var medalsDisplayed = false, circleClicked = false, mouseDown = false, holdingCircleFirst = false;
 var newsLinks = setupNews();
 var scrollButtons;
 var currentLink = 0;
 var circleSpans, circleSpansCopy = [];
 var hHeight, nHeight, divHeight;
+var circleSpanHeld;
 
 //var sectionsArray = [];
 
@@ -22,6 +23,8 @@ window.onload = () => {
     console.log(list);
     console.log(sections);
     console.log(countries);
+    document.addEventListener("mousedown", holdMouse);
+    document.addEventListener("mouseup", letGo);
     hHeight = document.getElementsByTagName("header")[0].offsetHeight;
     nHeight = document.getElementsByTagName("nav")[0].offsetHeight;
     divHeight = document.getElementsByClassName("navigation")[0].offsetHeight;
@@ -59,6 +62,8 @@ window.onload = () => {
         circleSpan.addEventListener("click", cycleThroughLinks);
         circleSpan.addEventListener("mouseover", changeHoverStyle);
         circleSpan.addEventListener("mouseout", resetHoverStyle);
+        circleSpan.addEventListener("mousedown", changeHoldingStyle);
+
         console.log(circleSpan);
         circleSpansCopy.push(circleSpan);
         document.getElementById("news").insertAdjacentElement("beforeend", circleSpan);
@@ -191,8 +196,11 @@ function changeCircleSpanSelected() {
 
 function changeHoverStyle() {
     event.currentTarget.style.cursor = "pointer";
-    if (event.currentTarget != circleSpans[circleSpansCopy.indexOf(circleSpans[currentLink])]) {
+    if ((event.currentTarget != circleSpans[circleSpansCopy.indexOf(circleSpans[currentLink])]) && (!holdingCircleFirst)) {
         event.currentTarget.style.backgroundColor = "gray";
+    }
+    if (mouseDown && holdingCircleFirst) {
+        circleSpanHeld.style.backgroundColor = window.getComputedStyle(circleSpanHeld).getPropertyValue("--darkerBgColor");
     }
 }
 
@@ -205,6 +213,24 @@ function resetHoverStyle() {
             circleSpans[i].style.backgroundColor = window.getComputedStyle(circleSpans[i]).getPropertyValue("--darkerBgColor");
         }
     }
+}
+
+function changeHoldingStyle() {
+    event.currentTarget.style.backgroundColor = window.getComputedStyle(event.currentTarget).getPropertyValue("--darkerBgColor");
+    holdingCircleFirst = true;
+    circleSpanHeld = event.currentTarget;
+    console.log(mouseDown);
+}
+
+function holdMouse() {
+    mouseDown = true;
+    console.log(mouseDown);
+}
+
+function letGo() {
+    mouseDown = false;
+    console.log(mouseDown);
+    holdingCircleFirst = false;
 }
 
 function navScroll() {
