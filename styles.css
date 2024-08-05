@@ -100,3 +100,20 @@ section {
 #news {
     height: 15vw;
 }
+
+.headline-scroller-selector {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    display: inline-block;
+    background-color: var(--bgColor);
+}
+
+.headline-scroller-selector:hover {
+    background-color: grey;
+    cursor: pointer;
+}
+
+.headline-scroller-selector:active {
+    background-color: var(--darkerBgColor);
+}
