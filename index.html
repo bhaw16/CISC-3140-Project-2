@@ -1,43 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>
             Paris Olympic Games
         </title>
+        <meta charset="utf-8">
+        <meta content="viewport">
         <link href="images/icon.jpeg" rel="icon" type="image/x-icon">
         <link href="styles.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Contrail+One&display=swap"
+        rel="stylesheet" type="text/css">
     </head>
     <body>
         <script src="scripts/Medal.js"></script>
         <script src="scripts/AnchorProperties.js"></script>
         <script src="scripts/script.js"></script>
-        <header>
-            <h1>Paris Olympic Games</h1>
-            <img src="images/Paris.jpg" alt="image of the Eiffel Tower on the left side of a beige background outlined
-            with a red stroke of paint on the right of the tower and a blue stroke of paint on the left of the tower.
-            The side of the image with the Eiffel Tower also has a backdrop of clouds against it. The right side of the
-            image has the NBC logo, the word Paris in all caps, the number 2024 to repreent the year 2024 and the
-            Olympic rings logo in all black.">
-        </header>
-        <nav>
-            <ul>
-                <li>
-                    <span class="nav-item">
-                        Medal Rankings
-                    </span>
-                </li>
-                <li>
-                    <span class="nav-item">
-                        Sports List
-                    </span>
-                </li>
-                <li>
-                    <span class="nav-item">
-                        News
-                    </span>
-                </li>
-            </ul>
-        </nav>
+        <div class="navigation">
+            <header>
+                <h1 class="header-items">Paris Olympic Games</h1>
+                <img src="images/icon.jpeg" id="icon" class="header-items"
+                alt="colored Olympic logo with the Eiffel tower replacing the black hoop.">
+                <!--
+                    <img src="images/Paris.jpg" alt="image of the Eiffel Tower on the left side of a beige background outlined
+                    with a red stroke of paint on the right of the tower and a blue stroke of paint on the left of the tower.
+                    The side of the image with the Eiffel Tower also has a backdrop of clouds against it. The right side of the
+                    image has the NBC logo, the word Paris in all caps, the number 2024 to repreent the year 2024 and the
+                    Olympic rings logo in all black.">
+                -->
+            </header>
+            <nav>
+                <ul>
+                    <li class="nav-list-item" id="medal-item">
+                        <span class="nav-item">
+                            Medal Rankings
+                        </span>
+                    </li>
+                    <li class="nav-list-item" id="sports-item">
+                        <span class="nav-item">
+                            Sports List
+                        </span>
+                        </li>
+                        <li class="nav-list-item" id="news-item">
+                        <span class="nav-item">
+                            News
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
         <br>
         <br>
         <br>
@@ -151,7 +161,7 @@
             <button type="button" value="☜" class="left-and-right-buttons"
             id="left">☜</button>
             <h3 id="news-header">
-                <a id="news-link"></a>
+                <a id="news-link" target="_blank"></a>
                 <!--
                 <a href="https://olympics.com/en/news/paris-2024-tennis-nadal-eliminated-other-stars-advance"
             target="_blank" title="Rafael Nadal Article">

@@ -1,0 +1,102 @@
+:root {
+    --bgColor: rgb(180, 199, 242);
+    --textBgColor: black;
+    --darkerBgColor: hsl(222, 70%, 50%);
+}
+
+h1, h2 {
+    font-family: "Abril Fatface";
+}
+
+body { 
+    background-color: var(--bgColor);
+    background-image: url("images/stadium-track.avif");
+    background-size: 100vw 100vh;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    font-family: "Contrail One";
+}
+
+#icon {
+    width: 75px;
+    height: 50px;
+    cursor: pointer;
+}
+
+header, nav {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--textBgColor);
+    color: var(--bgColor);
+    margin-top: 0px;
+}
+
+header {
+    height: calc(50px + 5vw);
+}
+
+.navigation {
+    position: sticky;
+    top: 0px;
+}
+
+.nav-list-item {
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0vw 2.5vw;
+    display: inline;
+    padding: 15px;
+}
+
+.nav-item:hover {
+    cursor: pointer;
+    color: var(--darkerBgColor);
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul + header {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#medal-item {
+    align-self: flex-start;
+}
+
+#news-item {
+    align-self: flex-end;
+}
+
+.header-items {
+    margin: 0px 2.5vw;
+}
+
+button {
+    font-family: "Contrail One";
+    color: var(--textBgColor);
+    background-color: var(--bgColor);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+section {
+    color: var(--bgColor);
+    background-color: var(--textBgColor);
+    margin: 25vw 0vw;
+}
+
+#news {
+    height: 15vw;
+}
