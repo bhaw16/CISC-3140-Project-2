@@ -7,6 +7,7 @@ var newsLinks = setupNews();
 var scrollButtons;
 var currentLink = 0;
 var circleSpans, circleSpansCopy = [];
+var hHeight, nHeight, divHeight;
 
 //var sectionsArray = [];
 
@@ -21,6 +22,16 @@ window.onload = () => {
     console.log(list);
     console.log(sections);
     console.log(countries);
+    hHeight = document.getElementsByTagName("header")[0].offsetHeight;
+    nHeight = document.getElementsByTagName("nav")[0].offsetHeight;
+    divHeight = document.getElementsByClassName("navigation")[0].offsetHeight;
+    console.log(`header\'s height: ${hHeight}`);
+    console.log(`nav\'s height: ${nHeight}`);
+    console.log(`height of container div for nav and header: ${divHeight}`);
+    console.log(`div height == nav\'s height + header\'s height? ${(hHeight + nHeight) == divHeight}`);
+    document.getElementById("icon").addEventListener("click", iconClick = () => {
+        scrollTo(0, 0);
+    });
     for (var i = 0; i < list.length; i++) {
         list[i].addEventListener("click", navScroll);
         listCopy.push(list[i]);
@@ -33,6 +44,7 @@ window.onload = () => {
         countriesCopy.push(countries[i]);
         countries[i].insertAdjacentElement("afterend", document.createElement("p"));
         document.getElementsByTagName("p")[i].className = "medal-count";
+        document.getElementsByTagName("p")[i].style.backgroundColor = null;
     }
     document.getElementById("news-link").innerHTML = newsLinks[currentLink].innerHTML;
     document.getElementById("news-link").href = newsLinks[currentLink].href;
@@ -71,12 +83,15 @@ function displayMedals() {
         if (!medalsDisplayed) {
             event.currentTarget.innerText = "Hide Medals";
             console.log(index);
+            document.getElementsByClassName("medal-count")[index].style.color = window.getComputedStyle(document.getElementsByClassName("medal-count")[index]).getPropertyValue("--bgColor");
+            document.getElementsByClassName("medal-count")[index].style.backgroundColor = window.getComputedStyle(document.getElementsByClassName("medal-count")[index]).getPropertyValue("--textBgColor");
             document.getElementsByClassName("medal-count")[index].innerText = medals[index].toString();
         }
         else {
             event.currentTarget.innerText = "Display Medals";
             console.log(document.getElementsByClassName("medal-count")[index]);
             document.getElementsByClassName("medal-count")[index].innerText = null;
+            document.getElementsByClassName("medal-count")[index].style.backgroundColor = null;
         }
         event.currentTarget.innerHTML = event.currentTarget.innerText;
     }
@@ -172,7 +187,8 @@ function changeCircleSpanSelected() {
 }
 
 function navScroll() {
-    scrollTo(0, sections[listCopy.indexOf(event.currentTarget)].offsetTop);
+    divHeight = document.getElementsByClassName("navigation")[0].offsetHeight;
+    scrollTo(0, sections[listCopy.indexOf(event.currentTarget)].offsetTop - divHeight);
     //sections[listCopy.indexOf(event.currentTarget)].scrollIntoView(true);
     console.log(sections[listCopy.indexOf(event.currentTarget)].offsetTop);
     console.log(sections[listCopy.indexOf(event.currentTarget)]);
