@@ -2,7 +2,7 @@ var sections, list;
 var listCopy = [], sectionsCopy = [];
 var countries, medals = createMedals();
 var countriesCopy = [];
-var medalsDisplayed = false, circleClicked = false, mouseDown = false, holdingCircleFirst = false;
+var medalsDisplayed = false, circleClicked = false, mouseDown = false, wasHoldingCircle = holdingCircleFirst = false;
 var newsLinks = setupNews();
 var scrollButtons;
 var currentLink = 0;
@@ -204,13 +204,19 @@ function changeHoverStyle() {
     }
 }
 
+/*to remove the hover color after holding down
+on the circle and dragging the mouse outside of it,
+comment out the outermost conditional
+*/
 function resetHoverStyle() {
-    for (var i = 0; i < circleSpans.length; i++) {
-        if (i != currentLink) {
-            circleSpans[i].style.backgroundColor = window.getComputedStyle(circleSpans[i]).getPropertyValue("--bgColor");
-        }
-        else {
-            circleSpans[i].style.backgroundColor = window.getComputedStyle(circleSpans[i]).getPropertyValue("--darkerBgColor");
+    if (!holdingCircleFirst) {
+        for (var i = 0; i < circleSpans.length; i++) {
+            if (i != currentLink) {
+                circleSpans[i].style.backgroundColor = window.getComputedStyle(circleSpans[i]).getPropertyValue("--bgColor");
+            }
+            else {
+                circleSpans[i].style.backgroundColor = window.getComputedStyle(circleSpans[i]).getPropertyValue("--darkerBgColor");
+            }
         }
     }
 }
@@ -230,7 +236,12 @@ function holdMouse() {
 function letGo() {
     mouseDown = false;
     console.log(mouseDown);
+    wasHoldingCircle = holdingCircleFirst;
     holdingCircleFirst = false;
+    if (wasHoldingCircle) {
+        resetHoverStyle();
+        wasHoldingCircle = false;
+    }
 }
 
 function navScroll() {
@@ -241,18 +252,3 @@ function navScroll() {
     console.log(sections[listCopy.indexOf(event.currentTarget)]);
     console.log("successful!");
 }
-
-/*
-function onClick() {
-    console.log("clicked");
-    if (list[0].innerText.includes("Medal Rankings")) {
-        sections[0].scrollIntoView();
-    }
-    else if (list[1].innerText.includes("Sports")) {
-        sections[1].scrollIntoView();
-    }
-    else if (list[2].innerText.includes("News")) {
-        sections[2].scrollIntoView();
-    }
-}
-*/
