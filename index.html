@@ -48,10 +48,6 @@
                 </ul>
             </nav>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
         <section>
             <h2>Medal Rankings</h2>
             <ol>
@@ -107,11 +103,7 @@
                 </li>
             </ol>
         </section>
-        <br>
-        <br>
-        <br>
-        <br>
-        <section>
+        <section id="sports-list">
             <h2>Sports List</h2>
             <p>
                 Here's a list of some sports being played at the Paris 2024 Olympics.
@@ -121,7 +113,7 @@
             </p>
             <ul>
                 <li>
-                    <button type="button" class="schedule-button"
+                    <button type="button" class="schedule-button" id="judo"
                     onclick="getJudoSchedules()" value="Get Judo Schedules">
                         Judo
                     </button>
@@ -139,7 +131,7 @@
                     </button>
                 </li>
                 <li>
-                    <button type="button" class="schedule-button"
+                    <button type="button" class="schedule-button" id="surfing"
                     onclick="getSurfingSchedules()" value="Get Surfing Schedules">
                         Surfing
                     </button>
@@ -152,39 +144,37 @@
                 </li>
             </ul>
         </section>
-        <br>
-        <br>
-        <br>
-        <br>
         <section id="news">
             <h2>News</h2>
-            <button type="button" value="☜" class="left-and-right-buttons"
-            id="left">☜</button>
-            <h3 id="news-header">
-                <a id="news-link" target="_blank"></a>
+            <div class="news-selector">
+                <button type="button" value="☜" class="left-and-right-buttons"
+                id="left">☜</button>
+                <h3 id="news-header">
+                    <a id="news-link" target="_blank"></a>
                 <!--
-                <a href="https://olympics.com/en/news/paris-2024-tennis-nadal-eliminated-other-stars-advance"
-            target="_blank" title="Rafael Nadal Article">
-                    Rafael Nadal ousted as Carlos Alcaraz, other stars advance
-                    <br>
-                    to third round of men's and women's singles
-                </a>
-            </h3>
-            <h3 class="news-header">
-                <a href="https://olympics.com/en/paris-2024/sport-explainers"
-                target="_blank" title="Sport Explainers Video">
-                    Get Ready for the Action: Wach Allianz Sports Explainers
-                </a>
-            </h3>
-            <h3 class="news-header">
-                <a href="https://olympics.com/en/news/tom-daley-olympic-gold-paris-2024-kids-watching"
-                target="_blank" title="Tom Daley Article">
-                    Tom Daley: "My Olympic gold medal is having my kids there to watch"
-                </a>
-            -->
-            </h3>
-            <button type="button" value="☞" class="left-and-right-buttons"
-            id="right">☞</button>
+                    <a href="https://olympics.com/en/news/paris-2024-tennis-nadal-eliminated-other-stars-advance"
+                        target="_blank" title="Rafael Nadal Article">
+                        Rafael Nadal ousted as Carlos Alcaraz, other stars advance
+                        <br>
+                        to third round of men's and women's singles
+                    </a>
+                </h3>
+                <h3 class="news-header">
+                    <a href="https://olympics.com/en/paris-2024/sport-explainers"
+                    target="_blank" title="Sport Explainers Video">
+                        Get Ready for the Action: Wach Allianz Sports Explainers
+                    </a>
+                </h3>
+                <h3 class="news-header">
+                    <a href="https://olympics.com/en/news/tom-daley-olympic-gold-paris-2024-kids-watching"
+                    target="_blank" title="Tom Daley Article">
+                        Tom Daley: "My Olympic gold medal is having my kids there to watch"
+                    </a>
+                -->
+                </h3>
+                <button type="button" value="☞" class="left-and-right-buttons"
+                id="right">☞</button>
+            </div>
         </section>
     </body>
 </html>

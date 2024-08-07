@@ -6,6 +6,16 @@
 
 h1, h2 {
     font-family: "Abril Fatface";
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+p.medal-count {
+    text-align: left;
+    display: inline;
 }
 
 body { 
@@ -61,6 +71,14 @@ ul {
     padding: 0px;
 }
 
+ul button {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0px 50%;
+}
+
 ul + header {
     display: flex;
     flex-flow: row wrap;
@@ -85,30 +103,118 @@ button {
     font-family: "Contrail One";
     color: var(--textBgColor);
     background-color: var(--bgColor);
+    text-align: center;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
 }
 
 button:hover {
     cursor: pointer;
+    color: white;
+    background-color: var(--darkerBgColor);
 }
 
 section {
     color: var(--bgColor);
     background-color: var(--textBgColor);
-    margin: 25vw 0vw;
+    width: 100vw;
+    height: 70vh;
+    margin: 55vw 0vw;
 }
 
 #news {
-    height: 15vw;
+    height: 35vh;
+}
+
+.schedule-button {
+    width: 150px;
+    height: 45px;
+    margin: 30px 0px 25px 45%;
+    padding: 23px 38px;
+    text-align: center;
+}
+
+#judo {
+    padding-left: 62px;
+}
+
+#surfing {
+    padding-left: 60px;
 }
 
 .headline-scroller-selector {
     width: 30px;
     height: 30px;
     border-radius: 15px;
-    display: inline-block;
+    display: inline-flex;
+    flex-flow: row wrap;
     background-color: var(--bgColor);
+    align-items: center;
+    justify-content: center;
+    margin: 0px 5px;
+}
+
+ol {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    list-style-type: decimal;
+}
+
+
+.medal-button {
+    display: inline;
+    margin-left: none;
+}
+
+
+#left {
+    margin-right: 75px;
+}
+
+#right {
+    margin-left: 75px;
+}
+
+.left-and-right-buttons {
+    font-size: medium;
+}
+
+#leftmost-circle {
+    margin-left: 45%;
+}
+
+#rightmost-circle {
+    margin-left: 45%;
 }
 
 .headline-scroller-selector:active {
     background-color: var(--darkerBgColor);
+}
+
+a {
+    color: var(--bgColor);
+    text-decoration: none;
+    width: 420px;
+    height: 23px;
+    max-width: 420px;
+    max-height: 23px;
+}
+
+a:hover {
+    color: gray;
+}
+
+a:active {
+    color: var(--darkerBgColor);
+}
+
+.news-selector {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
 }
